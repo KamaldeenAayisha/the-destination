@@ -153,7 +153,7 @@ function Booking() {
                 <h2>{service.title}</h2>
                 <p>{service.description}</p>
 
-                <button type="button">Select Service</button>
+                
               </div>
             </article>
           ))}

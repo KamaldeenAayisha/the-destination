@@ -1,17 +1,26 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+
 import leavesImage from "../assets/images/contact-leaves.png";
 import "../css/Contactpage.css";
 
 function Contact() {
-  const [formData, setFormData] = useState({
+  const location = useLocation();
+
+  const selectedService = location.state?.selectedService || "";
+
+  const [formData, setFormData] = useState(() => ({
     name: "",
     email: "",
     phone: "",
-    service: "",
+    service: selectedService,
     message: "",
-  });
+  }));
 
   const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,34 +29,103 @@ function Contact() {
       ...previousData,
       [name]: value,
     }));
+
+    if (statusMessage) {
+      setStatusMessage("");
+      setStatusType("");
+    }
   };
 
-  const handleSubmit = (event) => {
+  const validateForm = () => {
+    if (!formData.name.trim()) {
+      return "Please enter your name.";
+    }
+
+    if (!formData.email.trim()) {
+      return "Please enter your email address.";
+    }
+
+    if (!formData.phone.trim()) {
+      return "Please enter your phone number.";
+    }
+
+    if (!formData.service) {
+      return "Please select a service.";
+    }
+
+    if (!formData.message.trim()) {
+      return "Please describe your project.";
+    }
+
+    return "";
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.service ||
-      !formData.message.trim()
-    ) {
-      setStatusMessage("Please complete all required fields.");
+    const validationMessage = validateForm();
+
+    if (validationMessage) {
+      setStatusType("error");
+      setStatusMessage(validationMessage);
       return;
     }
 
-    console.log("Contact form:", formData);
+    const bookingData = {
+      customerName: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      service: formData.service,
+      eventDate: null,
+      location: "",
+      message: formData.message.trim(),
+    };
 
-    setStatusMessage(
-      "Your message has been submitted successfully. We will contact you soon."
-    );
+    try {
+      setIsSubmitting(true);
+      setStatusMessage("");
+      setStatusType("");
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    });
+      const response = await axios.post(
+        "http://localhost:8080/api/bookings",
+        bookingData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      setStatusType("success");
+      setStatusMessage(
+        `Your request was submitted successfully. Booking ID: ${response.data.id}`
+      );
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Booking submission failed:", error);
+
+      let message =
+        "Unable to submit your request. Please try again after some time.";
+
+      if (error.code === "ERR_NETWORK") {
+        message =
+          "Cannot connect to the backend. Make sure Spring Boot is running on port 8080.";
+      } else if (error.response?.data?.message) {
+        message = error.response.data.message;
+      }
+
+      setStatusType("error");
+      setStatusMessage(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -114,6 +192,7 @@ function Contact() {
                   stroke="currentColor"
                   strokeWidth="2"
                 />
+
                 <circle
                   cx="12"
                   cy="12"
@@ -122,7 +201,13 @@ function Contact() {
                   stroke="currentColor"
                   strokeWidth="2"
                 />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                />
               </svg>
             </a>
 
@@ -139,7 +224,11 @@ function Contact() {
                   stroke="currentColor"
                   strokeWidth="1.8"
                 />
-                <path d="m10 9 5 3-5 3V9Z" fill="currentColor" />
+
+                <path
+                  d="m10 9 5 3-5 3V9Z"
+                  fill="currentColor"
+                />
               </svg>
             </a>
 
@@ -156,6 +245,7 @@ function Contact() {
                   stroke="currentColor"
                   strokeWidth="2"
                 />
+
                 <path
                   d="M9 8.5c.5 2.4 2.2 4.1 4.6 4.8"
                   fill="none"
@@ -174,8 +264,13 @@ function Contact() {
 
         {/* Form */}
         <div className="leaf-contact-form-panel">
-          <form className="leaf-contact-form" onSubmit={handleSubmit}>
-            <span className="leaf-form-label">START YOUR PROJECT</span>
+          <form
+            className="leaf-contact-form"
+            onSubmit={handleSubmit}
+          >
+            <span className="leaf-form-label">
+              START YOUR PROJECT
+            </span>
 
             <h2>Tell us about your idea</h2>
 
@@ -190,6 +285,8 @@ function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your name"
+                  autoComplete="name"
+                  required
                 />
               </div>
 
@@ -203,11 +300,13 @@ function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your email"
+                  autoComplete="email"
+                  required
                 />
               </div>
 
               <div className="leaf-form-field">
-                <label htmlFor="phone">Phone Number</label>
+                <label htmlFor="phone">Phone Number *</label>
 
                 <input
                   id="phone"
@@ -216,6 +315,8 @@ function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+91 98765 43210"
+                  autoComplete="tel"
+                  required
                 />
               </div>
 
@@ -227,12 +328,26 @@ function Contact() {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
+                  required
                 >
                   <option value="">Choose a service</option>
-                  <option value="Wedding Film">Wedding Film</option>
-                  <option value="Reels & Shorts">Reels & Shorts</option>
-                  <option value="Content Creation">Content Creation</option>
-                  <option value="Video Editing">Video Editing</option>
+
+                  <option value="Wedding Videos">
+                    Wedding Film
+                  </option>
+
+                  <option value="Reels & Shorts">
+                    Reels &amp; Shorts
+                  </option>
+
+                  <option value="Content Creation">
+                    Content Creation
+                  </option>
+
+                  <option value="Video Editing">
+                    Video Editing
+                  </option>
+
                   <option value="Other">Other</option>
                 </select>
               </div>
@@ -247,16 +362,30 @@ function Contact() {
                   onChange={handleChange}
                   rows="6"
                   placeholder="Describe your project, preferred date, location and requirements..."
+                  required
                 />
               </div>
             </div>
 
             {statusMessage && (
-              <div className="leaf-contact-status">{statusMessage}</div>
+              <div
+                className={`leaf-contact-status ${
+                  statusType === "success"
+                    ? "leaf-contact-status-success"
+                    : "leaf-contact-status-error"
+                }`}
+                role="alert"
+              >
+                {statusMessage}
+              </div>
             )}
 
-            <button type="submit" className="leaf-contact-submit">
-              Send Message
+            <button
+              type="submit"
+              className="leaf-contact-submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
