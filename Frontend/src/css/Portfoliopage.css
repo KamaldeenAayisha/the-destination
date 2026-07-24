@@ -1,0 +1,159 @@
+.portfolio-page {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #050505;
+  color: #ffffff;
+}
+
+.portfolio-introduction {
+  width: 100%;
+  padding: 150px 7% 70px;
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(212, 175, 55, 0.15),
+      transparent 35%
+    ),
+    #080808;
+}
+
+.portfolio-introduction span {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #d4af37;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.portfolio-introduction h1 {
+  max-width: 850px;
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.08;
+}
+
+.portfolio-introduction p {
+  max-width: 850px;
+  margin-top: 22px;
+  color: #aaaaaa;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.portfolio-video-list {
+  width: 100%;
+  padding: 20px 7% 90px;
+}
+
+.portfolio-video-item {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 70px;
+  overflow: hidden;
+  background: #000000;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.portfolio-video-item video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #000000;
+}
+
+.portfolio-page-cta {
+  width: 100%;
+  padding: 95px 7%;
+  text-align: center;
+  background: #f2ece0;
+  color: #111111;
+}
+
+.portfolio-page-cta > span {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #a37b22;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.portfolio-page-cta h2 {
+  max-width: 850px;
+  margin: 0 auto;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(38px, 5vw, 65px);
+  line-height: 1.12;
+}
+
+.portfolio-page-cta p {
+  max-width: 650px;
+  margin: 22px auto 32px;
+  color: #625e55;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.portfolio-book-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 30px;
+  border: 1px solid #111111;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+}
+
+.portfolio-book-button:hover {
+  background: transparent;
+  color: #111111;
+}
+
+@media (max-width: 768px) {
+  .portfolio-introduction {
+    padding: 125px 20px 55px;
+  }
+
+  .portfolio-introduction h1 {
+    font-size: 40px;
+  }
+
+  .portfolio-introduction p {
+    font-size: 15px;
+  }
+
+  .portfolio-video-list {
+    padding: 15px 20px 65px;
+  }
+
+  .portfolio-video-item {
+    margin-bottom: 45px;
+  }
+
+  .portfolio-page-cta {
+    padding: 70px 20px;
+  }
+
+  .portfolio-book-button {
+    width: 100%;
+  }
+}
+
+.single-line-text {
+  white-space: nowrap;
+  max-width: none;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.6;
+}

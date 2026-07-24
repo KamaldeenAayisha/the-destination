@@ -1,0 +1,113 @@
+.home-story-cta {
+  position: relative;
+  width: 100%;
+  padding: 110px 7%;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      135deg,
+      hsl(199, 48%, 54%) 0%,
+      lab(85.36% 1.43 41.2 / 0.784) 50%,
+      #032734 100%
+    );
+  color: hwb(212 0% 71% / 0.91);
+}
+
+
+.home-story-cta-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 75px 45px;
+  text-align: center;
+  border: 3px solid rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.home-story-cta-content > span {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: hwb(0 0% 100%);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 6px;
+}
+
+.home-story-cta-content h2 {
+  max-width: 850px;
+  margin: 0 auto;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 5.5vw, 70px);
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+.home-story-cta-content p {
+  max-width: 650px;
+  margin: 26px auto 38px;
+  color: #100101;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.home-story-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+  min-height: 56px;
+  padding: 0 32px;
+  border: 1px solid #020200;
+  background: transparent;
+  color: #000000;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.home-story-button:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .home-story-cta {
+    padding: 75px 20px;
+  }
+
+  .home-story-cta-content {
+    padding: 60px 24px;
+  }
+
+  .home-story-cta-content > span {
+    font-size: 9px;
+    letter-spacing: 4px;
+  }
+
+  .home-story-cta-content h2 {
+    font-size: 40px;
+  }
+
+  .home-story-cta-content p {
+    font-size: 15px;
+  }
+
+  .home-story-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .home-story-cta::before,
+  .home-story-cta::after {
+    width: 150px;
+  }
+}

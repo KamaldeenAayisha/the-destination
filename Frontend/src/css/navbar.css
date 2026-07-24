@@ -1,0 +1,564 @@
+/* ==================================================
+   NAVBAR
+================================================== */
+
+.site-navbar,
+.site-navbar * {
+  box-sizing: border-box;
+}
+
+.site-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 100%;
+  min-height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 18px 4%;
+
+  will-change: transform;
+
+  transition:
+    transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    min-height 0.35s ease,
+    padding 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+/* Visible state */
+
+.navbar-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smoothly move the navbar above the browser */
+
+.navbar-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-115%);
+}
+
+/* Transparent at the top of normal pages */
+
+.navbar-transparent {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+}
+
+/* When it reappears while the user is in the middle of a page */
+
+.navbar-floating {
+  min-height: 82px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background: rgba(8, 8, 8, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Booking page always has a visible dark background */
+
+.navbar-booking-page {
+  background: rgba(8, 8, 8, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* ==================================================
+   BRAND
+================================================== */
+
+.navbar-brand {
+  position: relative;
+  z-index: 1002;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  flex-shrink: 0;
+
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  display: block;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+  object-fit: contain;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.navbar-brand:hover .navbar-logo {
+  transform: scale(1.06);
+
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+.navbar-brand-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-brand-content strong {
+  color: #ffffff;
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+
+  letter-spacing: 3px;
+  white-space: nowrap;
+
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.75);
+}
+
+.navbar-brand-content span {
+  margin-top: 7px;
+
+  color: #d4af37;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  white-space: nowrap;
+
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* ==================================================
+   NAVIGATION LINKS
+================================================== */
+
+.navbar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: clamp(20px, 2.3vw, 43px);
+}
+
+.navbar-link {
+  position: relative;
+
+  padding: 14px 0;
+
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navbar-link::after {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  bottom: 7px;
+  left: 0;
+
+  width: 0;
+  height: 1px;
+  margin: auto;
+
+  background: #d4af37;
+
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: #d4af37;
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+  width: 100%;
+}
+
+.navbar-link:hover {
+  transform: translateY(-2px);
+}
+
+/* ==================================================
+   BOOKING BUTTON
+================================================== */
+
+.navbar-book-link {
+  min-height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 27px;
+
+  border: 1px solid #d4af37;
+  border-radius: 999px;
+
+  background: #d4af37;
+  color: #111111;
+
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navbar-book-link:hover {
+  background: transparent;
+  color: #d4af37;
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+}
+
+.navbar-book-link.active {
+  background: transparent;
+  color: #d4af37;
+}
+
+/* ==================================================
+   MOBILE MENU BUTTON
+================================================== */
+
+.navbar-menu-button {
+  position: relative;
+  z-index: 1002;
+
+  width: 48px;
+  height: 48px;
+
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.navbar-menu-button span {
+  display: block;
+
+  width: 27px;
+  height: 1px;
+
+  background: #ffffff;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    width 0.3s ease;
+}
+
+.navbar-menu-button span:nth-child(2) {
+  width: 20px;
+  margin-left: 7px;
+}
+
+.navbar-menu-button-open span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-menu-button-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-menu-button-open span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==================================================
+   MOBILE OVERLAY
+================================================== */
+
+.navbar-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: none;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+  border: none;
+
+  background: rgba(0, 0, 0, 0.58);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ==================================================
+   SMALL DESKTOP
+================================================== */
+
+@media (max-width: 1150px) {
+  .site-navbar {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .navbar-brand-content strong {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .navbar-brand-content span {
+    letter-spacing: 2.5px;
+  }
+
+  .navbar-navigation {
+    gap: 20px;
+  }
+
+  .navbar-link {
+    font-size: 10px;
+    letter-spacing: 1.7px;
+  }
+
+  .navbar-book-link {
+    padding: 0 20px;
+  }
+}
+
+/* ==================================================
+   TABLET AND MOBILE
+================================================== */
+
+@media (max-width: 900px) {
+  .site-navbar,
+  .navbar-floating {
+    min-height: 82px;
+    padding: 12px 18px;
+  }
+
+  .navbar-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .navbar-brand-content strong {
+    font-size: 18px;
+  }
+
+  .navbar-brand-content span {
+    margin-top: 5px;
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+
+  .navbar-menu-button {
+    display: flex;
+  }
+
+  .navbar-mobile-overlay {
+    display: block;
+  }
+
+  .navbar-navigation {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 1001;
+
+    width: min(390px, 90vw);
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 4px;
+    padding: 110px 38px 50px;
+
+    overflow-y: auto;
+
+    background:
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(212, 175, 55, 0.12),
+        transparent 32%
+      ),
+      rgba(5, 5, 5, 0.98);
+
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.4);
+
+    transition: right 0.4s ease;
+  }
+
+  .navbar-navigation-open {
+    right: 0;
+  }
+
+  .navbar-link {
+    width: 100%;
+    padding: 14px 0;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 31px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .navbar-link::after {
+    right: auto;
+    bottom: 8px;
+    margin: 0;
+  }
+
+  .navbar-link:hover::after,
+  .navbar-link.active::after {
+    width: 65px;
+  }
+
+  .navbar-book-link {
+    width: 100%;
+    min-height: 55px;
+
+    margin-top: 24px;
+
+    border-radius: 0;
+  }
+}
+
+/* ==================================================
+   SMALL MOBILE
+================================================== */
+
+@media (max-width: 540px) {
+  .navbar-brand {
+    gap: 10px;
+  }
+
+  .navbar-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .navbar-brand-content strong {
+    font-size: 15px;
+    letter-spacing: 1.5px;
+  }
+
+  .navbar-brand-content span {
+    max-width: 180px;
+    overflow: hidden;
+
+    font-size: 6px;
+    letter-spacing: 1.7px;
+    text-overflow: ellipsis;
+  }
+
+  .navbar-navigation {
+    width: 100%;
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .navbar-link {
+    font-size: 28px;
+  }
+}
+
+/* ==================================================
+   REDUCED MOTION
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .site-navbar,
+  .navbar-logo,
+  .navbar-link,
+  .navbar-link::after,
+  .navbar-book-link,
+  .navbar-navigation,
+  .navbar-menu-button span {
+    transition: none;
+  }
+}
+
+.navbar-transparent {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.52) 0%,
+    rgba(0, 0, 0, 0.18) 70%,
+    transparent 100%
+  );
+
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.navbar-transparent .navbar-link {
+  color: #ffffff;
+
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 1),
+    0 4px 14px rgba(0, 0, 0, 0.85);
+}

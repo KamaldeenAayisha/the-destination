@@ -1,0 +1,238 @@
+.why-section {
+
+    min-height:650px;
+
+    background:
+    radial-gradient(
+        circle at bottom,
+        #af77a8,
+        #1701016c
+    );
+
+    color:white;
+
+    padding:120px 60px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+}
+
+
+
+/* Small gold heading */
+
+.why-tag {
+
+    color:#d4af37;
+
+    font-size:14px;
+
+    letter-spacing:6px;
+
+    font-weight:600;
+
+}
+
+
+
+/* Main statement */
+
+.why-content h2 {
+
+
+    margin-top:30px;
+
+    font-size:65px;
+
+    line-height:1.15;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    font-family:
+    "Playfair Display",
+    serif;
+
+
+}
+
+
+
+.why-content p {
+
+
+    margin-top:30px;
+
+    max-width:750px;
+
+    color:#cfcfcf;
+
+    font-size:20px;
+
+    line-height:1.8;
+
+
+}
+
+
+
+/* Statistics section */
+
+.stats-container {
+
+
+    margin-top:90px;
+
+    display:flex;
+
+    gap:120px;
+
+
+}
+
+
+
+.stat-item {
+
+
+    position:relative;
+
+    transition:0.5s;
+
+}
+
+
+
+.stat-item::after {
+
+
+    content:"";
+
+    position:absolute;
+
+    width:60px;
+
+    height:2px;
+
+    background:#d4af37;
+
+    bottom:-20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+
+}
+
+
+
+.stat-item h3 {
+
+
+    font-size:70px;
+
+    margin:0;
+
+    color:#0c0112a9;
+
+    font-weight:700;
+
+
+}
+
+
+
+.stat-item p {
+
+
+    margin-top:15px;
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    letter-spacing:1px;
+
+
+}
+
+
+
+/* Hover effect */
+
+.stat-item:hover {
+
+
+    transform:
+    translateY(-15px)
+    scale(1.05);
+
+
+}
+
+
+
+
+@media(max-width:900px){
+
+
+    .why-section {
+
+        padding:80px 25px;
+
+    }
+
+
+
+    .why-content h2 {
+
+
+        font-size:40px;
+
+    }
+
+
+
+    .why-content p {
+
+
+        font-size:16px;
+
+    }
+
+
+
+    .stats-container {
+
+
+        flex-direction:column;
+
+        gap:60px;
+
+
+    }
+
+
+
+    .stat-item h3 {
+
+
+        font-size:55px;
+
+    }
+
+
+}
+

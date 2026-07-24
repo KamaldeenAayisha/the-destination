@@ -1,0 +1,369 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+
+:root {
+  --leaf-page-background: #332e2a;
+  --leaf-info-background: #49443f;
+  --leaf-form-background: #88b681;
+  --leaf-form-dark: #37322f;
+  --leaf-white: #ffffff;
+  --leaf-muted: rgba(255, 255, 255, 0.65);
+  --leaf-border: rgba(255, 255, 255, 0.25);
+}
+
+.leaf-contact-page,
+.leaf-contact-page * {
+  box-sizing: border-box;
+}
+
+.leaf-contact-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 155px 6% 35px;
+  overflow-x: hidden;
+  background: var(--leaf-page-background);
+  color: var(--leaf-white);
+  font-family: "DM Sans", sans-serif;
+}
+
+/* ==================================================
+   MAIN CARD
+================================================== */
+
+.leaf-contact-card {
+  width: 100%;
+  max-width: 1300px;
+  min-height: 720px;
+  display: grid;
+  grid-template-columns: 26% 34% 40%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+}
+
+/* ==================================================
+   LEAF IMAGE
+================================================== */
+
+.leaf-contact-image {
+  min-height: 720px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ==================================================
+   INFORMATION PANEL
+================================================== */
+
+.leaf-contact-information {
+  position: relative;
+  min-width: 0;
+  padding: 70px 55px;
+  background: var(--leaf-info-background);
+}
+
+.leaf-contact-information::after {
+  content: "›";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  z-index: 5;
+  width: 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 30px 30px 0;
+  background: var(--leaf-info-background);
+  color: #ffffff;
+  font-size: 30px;
+  transform: translateY(-50%);
+}
+
+.leaf-contact-label,
+.leaf-form-label {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #b7d4b1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.leaf-contact-information h1 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(52px, 5vw, 78px);
+  line-height: 0.98;
+}
+
+.leaf-contact-description {
+  max-width: 420px;
+  margin: 28px 0 45px;
+  color: var(--leaf-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.leaf-contact-details {
+  display: grid;
+  gap: 25px;
+}
+
+.leaf-contact-details div {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.leaf-contact-details span {
+  display: block;
+  margin-bottom: 8px;
+  color: #b7d4b1;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.leaf-contact-details a,
+.leaf-contact-details p {
+  margin: 0;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.leaf-contact-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 35px;
+}
+
+.leaf-contact-socials a {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  color: #ffffff;
+  transition: 0.3s ease;
+}
+
+.leaf-contact-socials a:hover {
+  border-color: #b7d4b1;
+  background: #b7d4b1;
+  color: var(--leaf-form-dark);
+  transform: translateY(-3px);
+}
+
+.leaf-contact-socials svg {
+  width: 20px;
+  height: 20px;
+}
+
+.leaf-contact-department {
+  position: absolute;
+  left: 55px;
+  bottom: 35px;
+  color: #b7d4b1;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* ==================================================
+   FORM PANEL
+================================================== */
+
+.leaf-contact-form-panel {
+  min-width: 0;
+  padding: 60px;
+  background: var(--leaf-form-background);
+  color: var(--leaf-form-dark);
+}
+
+.leaf-contact-form {
+  width: 100%;
+}
+
+.leaf-form-label {
+  color: rgba(55, 50, 47, 0.7);
+}
+
+.leaf-contact-form h2 {
+  margin: 0 0 35px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.05;
+}
+
+.leaf-form-fields {
+  display: grid;
+  gap: 18px;
+}
+
+.leaf-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leaf-form-field label {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.leaf-form-field input,
+.leaf-form-field select,
+.leaf-form-field textarea {
+  width: 100%;
+  border: 1px solid rgba(55, 50, 47, 0.25);
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--leaf-form-dark);
+  padding: 15px;
+  font: inherit;
+  transition: 0.3s ease;
+}
+
+.leaf-form-field input,
+.leaf-form-field select {
+  min-height: 50px;
+}
+
+.leaf-form-field textarea {
+  resize: vertical;
+}
+
+.leaf-form-field input:focus,
+.leaf-form-field select:focus,
+.leaf-form-field textarea:focus {
+  border-color: var(--leaf-form-dark);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.leaf-form-field input::placeholder,
+.leaf-form-field textarea::placeholder {
+  color: rgba(55, 50, 47, 0.6);
+}
+
+.leaf-contact-status {
+  margin-top: 20px;
+  padding: 14px;
+  border-left: 4px solid var(--leaf-form-dark);
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.leaf-contact-submit {
+  min-width: 190px;
+  min-height: 52px;
+  display: block;
+  margin: 30px 0 0 auto;
+  border: 2px solid var(--leaf-form-dark);
+  background: var(--leaf-form-dark);
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+}
+
+.leaf-contact-submit:hover {
+  background: transparent;
+  color: var(--leaf-form-dark);
+  transform: translateY(-3px);
+}
+
+/* ==================================================
+   COPYRIGHT FOOTER
+================================================== */
+
+.leaf-contact-footer {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  margin: 28px auto 0;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+}
+
+.leaf-contact-footer p {
+  margin: 0;
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 1050px) {
+  .leaf-contact-card {
+    grid-template-columns: 35% 65%;
+  }
+
+  .leaf-contact-image {
+    grid-row: 1 / 3;
+    min-height: 100%;
+  }
+
+  .leaf-contact-information {
+    min-height: 650px;
+  }
+
+  .leaf-contact-form-panel {
+    grid-column: 2;
+  }
+
+  .leaf-contact-information::after {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .leaf-contact-page {
+    padding: 125px 20px 30px;
+  }
+
+  .leaf-contact-card {
+    grid-template-columns: 1fr;
+  }
+
+  .leaf-contact-image {
+    grid-row: auto;
+    min-height: 320px;
+  }
+
+  .leaf-contact-information {
+    min-height: auto;
+    padding: 55px 30px 100px;
+  }
+
+  .leaf-contact-form-panel {
+    grid-column: auto;
+    padding: 55px 30px;
+  }
+
+  .leaf-contact-department {
+    left: 30px;
+  }
+
+  .leaf-contact-submit {
+    width: 100%;
+  }
+
+  .leaf-contact-footer {
+    flex-direction: column;
+  }
+}
